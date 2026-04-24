@@ -2,6 +2,16 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 
+// Extract 2-3 brand words from a long business name — like big brands do
+const getLogoName = (name) => {
+  // Split on | or ( to isolate the primary brand segment
+  const primary = name.split(/\s*[|(]\s*/)[0].trim()
+  // Also split on " - " (spaced dash) to remove taglines
+  const segment = primary.split(/\s+-\s+/)[0].trim()
+  // Take first 3 words, strip trailing & or -
+  return segment.split(/\s+/).slice(0, 3).join(' ').replace(/\s*[&\-,]\s*$/, '')
+}
+
 export default function NavBar({ name, slug, phone, whatsapp, palette }) {
   const P = palette || { primary:"#0D6B6B", accent:"#C9A84C", bg:"#FAF7F2", dark:"#0a3d3d" }
   const [scrolled, setScrolled] = useState(false)
@@ -39,7 +49,7 @@ export default function NavBar({ name, slug, phone, whatsapp, palette }) {
           fontSize:20, fontWeight:700, color:"#fff", textDecoration:"none",
           letterSpacing:0.5, lineHeight:1.1, maxWidth:"55%"
         }}>
-          {name}
+          {getLogoName(name)}
         </Link>
 
         {/* Desktop links */}
