@@ -6,7 +6,7 @@ const PASSWORD = "admin123"
 
 const getWhatsAppUrl = (r) => {
   const phone = r.whatsapp.split('?')[0].replace('https://wa.me/', '')
-  const message = `Hello, Rahul here from Vadodara.\n\nI noticed your business didn't have a website, so I created one for you as a sample.\n\nHere's the preview link: https://weight-loss-six.vercel.app/${r.slug}\n\nIf you like it, I can make it live on your own domain. The website itself is completely free for you. Let me know your thoughts 🙂`
+  const message = `Hello, Rahul here from Vadodara.\n\nI noticed your business didn't have a website, so I created one for you as a sample.\n\nHere's the preview link: https://weight-loss-six.vercel.app/${r.slug}\n\nIf you like it, I can make it live on your own domain. The website itself is completely free for you. Let me know your thoughts.`
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
 }
 
